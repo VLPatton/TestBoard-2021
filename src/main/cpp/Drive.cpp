@@ -1,8 +1,7 @@
 /****************************************************************************
     Description:	Implements the CDrive control class.
     Classes:		CDrive
-    Project:		2021 Infinite Recharge Robot Code.
-    Copyright 2021 First Team 3284 - Camdenton LASER Robotics.
+    Project:		2022 Testboard Robot Code
 ****************************************************************************/
 #include "Drive.h"
 ///////////////////////////////////////////////////////////////////////////////
@@ -10,7 +9,7 @@
 /******************************************************************************
     Description:	CDrive Constructor.
     Arguments:		None
-    Derived From:	TimedRobot
+    Derived From:	Nothing
 ******************************************************************************/
 CDrive::CDrive(Joystick* pDriveController)
 {
@@ -28,7 +27,7 @@ CDrive::CDrive(Joystick* pDriveController)
 /******************************************************************************
     Description:	CDrive Destructor.
     Arguments:		None
-    Derived From:	TimedRobot
+    Derived From:	Nothing
 ******************************************************************************/
 CDrive::~CDrive()
 { 
@@ -56,9 +55,6 @@ void CDrive::Init()
     // Set max acceleration to .65 seconds.
     m_pDriveMotor1->SetOpenLoopRampRate(dMotorOpenLoopRampRate);
     m_pDriveMotor2->SetOpenLoopRampRate(dMotorOpenLoopRampRate);
-
-    // Invert right side.
-    m_pDriveMotor1->SetMotorInverted(true);
 
     // Clear persistant motor controller faults.
     m_pDriveMotor1->ClearStickyFaults();

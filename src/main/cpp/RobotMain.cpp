@@ -1,8 +1,7 @@
 /******************************************************************************
-    Description:	2021 Infinite Recharge Robot Control Software.
-    Classes:		CRobotMain
-    Project:		2021 Test Board Code
-    Copyright 2021 First Team 3284 - Camdenton LASER Robotics.
+	Description:	2021 Infinite Recharge Robot Control Software.
+	Classes:		CRobotMain
+	Project:		2022 Test Board Code
 ******************************************************************************/
 #include "RobotMain.h"
 
@@ -11,21 +10,23 @@
 ///////////////////////////////////////////////////////////////////////////////
 
 /******************************************************************************
-    Description:	CRobotMain Constructor.
-    Arguments:		None
-    Derived From:	TimedRobot
+	Description:	CRobotMain Constructor.
+	Arguments:		None
+	Derived From:	TimedRobot
 ******************************************************************************/
 CRobotMain::CRobotMain()
 {
-    // Initialize objects and variables.
-    m_pJoystick                     = new Joystick(0);
-    m_pDrive                        = new CDrive(m_pJoystick);
+	// Initialize objects and variables.
+	m_pJoystick                     = new Joystick(0);
+	m_pDrive                        = new CDrive(m_pJoystick);
+
+	m_pAutonomousChooser	        = new SendableChooser<string>();
 }
 
 /******************************************************************************
-    Description:	CRobotMain Destructor.
-    Arguments:		None
-    Derived From:	TimedRobot
+	Description:	CRobotMain Destructor.
+	Arguments:		None
+	Derived From:	TimedRobot
 ******************************************************************************/
 CRobotMain::~CRobotMain()
 {
@@ -34,9 +35,9 @@ CRobotMain::~CRobotMain()
 
 
 /****************************************************************************
-    Description:	Ran on initial startup of the robot.
-    Arguments: 		None
-    Returns: 		  Nothing
+	Description:	Ran on initial startup of the robot.
+	Arguments: 		None
+	Returns: 		  Nothing
 ****************************************************************************/
 void CRobotMain::RobotInit() 
 {
@@ -52,9 +53,9 @@ void CRobotMain::RobotInit()
 }
 
 /******************************************************************************
-    Description:	Runs every 20ms in a loop after the robot has started.
-    Arguments:	 	None
-    Returns: 		  Nothing
+	Description:	Runs every 20ms in a loop after the robot has started.
+	Arguments:	 	None
+	Returns: 		  Nothing
 ******************************************************************************/
 void CRobotMain::RobotPeriodic()
 {
@@ -63,9 +64,9 @@ void CRobotMain::RobotPeriodic()
 
 
 /******************************************************************************
-    Description:	Ran only once, after the robot has entered Autonomous mode.
-    Arguments:	 	None
-    Returns: 		  Nothing
+	Description:	Ran only once, after the robot has entered Autonomous mode.
+	Arguments:	 	None
+	Returns: 		  Nothing
 ******************************************************************************/
 void CRobotMain::AutonomousInit() 
 {
@@ -73,10 +74,10 @@ void CRobotMain::AutonomousInit()
 }
 
 /******************************************************************************
-    Description:	Runs every 20ms in a loop after the robot has entered
-                    Autonomous mode.
-    Arguments:	 	None
-    Returns: 		  Nothing
+	Description:	Runs every 20ms in a loop after the robot has entered
+					Autonomous mode.
+	Arguments:	 	None
+	Returns: 		  Nothing
 ******************************************************************************/
 void CRobotMain::AutonomousPeriodic() 
 {
@@ -84,31 +85,31 @@ void CRobotMain::AutonomousPeriodic()
 }
 
 /******************************************************************************
-    Description:	Ran only once, after the robot has entered Teleop mode.
-    Arguments:	 	None
-    Returns: 		  Nothing
+	Description:	Ran only once, after the robot has entered Teleop mode.
+	Arguments:	 	None
+	Returns: 		  Nothing
 ******************************************************************************/
 void CRobotMain::TeleopInit()
 {
-    // Initialize classes.
-    m_pDrive->Init();
+	// Initialize classes.
+	m_pDrive->Init();
 }
 
 /******************************************************************************
-    Description:	Runs every 20ms in a loop after the robot has entered
-                    Teleop mode.
-    Arguments:	 	None
-    Returns: 		  Nothing
+	Description:	Runs every 20ms in a loop after the robot has entered
+					Teleop mode.
+	Arguments:	 	None
+	Returns: 		  Nothing
 ******************************************************************************/
 void CRobotMain::TeleopPeriodic()
 {
-    m_pDrive->Tick();
+	m_pDrive->Tick();
 }
 
 /******************************************************************************
-    Description:	Ran only once, after the robot has entered Disabled mode.
-    Arguments:	 	None
-    Returns: 		  Nothing
+	Description:	Ran only once, after the robot has entered Disabled mode.
+	Arguments:	 	None
+	Returns: 		  Nothing
 ******************************************************************************/
 void CRobotMain::DisabledInit()
 {
@@ -116,10 +117,10 @@ void CRobotMain::DisabledInit()
 }
 
 /******************************************************************************
-    Description:	Runs every 20ms in a loop after the robot has entered
-                    Teleop mode.
-    Arguments:	 	None
-    Returns: 		  Nothing
+	Description:	Runs every 20ms in a loop after the robot has entered
+					Teleop mode.
+	Arguments:	 	None
+	Returns: 		  Nothing
 ******************************************************************************/
 void CRobotMain::DisabledPeriodic()
 {
@@ -127,9 +128,9 @@ void CRobotMain::DisabledPeriodic()
 }
 
 /******************************************************************************
-    Description:	Ran only once, after the robot has entered Teleop mode.
-    Arguments:	 	None
-    Returns: 		  Nothing
+	Description:	Ran only once, after the robot has entered Teleop mode.
+	Arguments:	 	None
+	Returns: 		  Nothing
 ******************************************************************************/
 void CRobotMain::TestInit() 
 {
@@ -137,10 +138,10 @@ void CRobotMain::TestInit()
 }
 
 /******************************************************************************
-    Description:	Runs every 20ms in a loop after the robot has entered
-                    Teleop mode.
-    Arguments:	 	None
-    Returns: 		  Nothing
+	Description:	Runs every 20ms in a loop after the robot has entered
+					Teleop mode.
+	Arguments:	 	None
+	Returns: 		  Nothing
 ******************************************************************************/
 void CRobotMain::TestPeriodic()
 {

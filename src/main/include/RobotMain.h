@@ -1,8 +1,7 @@
 /****************************************************************************
     Description:	Defines the RobotMain class.
     Classes:		CRobotMain
-    Project:		2021 Test Board Project
-    Copyright 2021 First Team 3284 - Camdenton LASER Robotics.
+    Project:		2022 Testboard Robot Code
 ****************************************************************************/
 #pragma once
 

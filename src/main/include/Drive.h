@@ -1,8 +1,7 @@
 /****************************************************************************
     Description:	Defines the CDrive control class.
     Classes:		CDrive
-    Project:		2021 Infinite Recharge Robot Code.
-    Copyright 2021 First Team 3284 - Camdenton LASER Robotics.
+    Project:		2022 Testboard Robot Code
 ****************************************************************************/
 #ifndef Drive_h
 #define Drive_h

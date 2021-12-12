@@ -1,8 +1,7 @@
 /****************************************************************************
     Description:	Defines the CAuxAttachment control class.
     Classes:		CAuxAttachment
-    Project:		2021 Infinite Recharge Robot Code.
-    Copyright 2021 First Team 3284 - Camdenton LASER Robotics.
+    Project:		2022 Testboard Robot Code
 ****************************************************************************/
 #ifndef AuxAttachment_h
 #define AuxAttachment_h
@@ -30,9 +29,9 @@ public:
 
 private:
     // Declare class objects and variables.
-    CANSparkMax*                            m_pAuxMotor1;
-    WPI_TalonFX*                            m_pAuxMotor2;
-    WPI_TalonSRX*                           m_pAuxMotor3;
+    CANSparkMax*                            m_pAuxMotor1;       // NEO 550
+    WPI_TalonFX*                            m_pAuxMotor2;       // Falcon 500
+    WPI_TalonSRX*                           m_pAuxMotor3;       // BAG Motor
     Solenoid*                               m_pActuator1;
 };
 ///////////////////////////////////////////////////////////////////////////////
