@@ -6,6 +6,7 @@
 #pragma once
 
 #include "Drive.h"
+#include "AuxAttachment.h"
 
 #include <string>
 #include <frc/TimedRobot.h>
@@ -43,6 +44,7 @@ class CRobotMain : public TimedRobot
  private:
   // Declare objects and variables.
   CDrive*                           m_pDrive;
+  CAuxAttachment*                   m_pAuxAttachment;
   SendableChooser<string>*          m_pAutonomousChooser;
   string                            m_strAutoSelected;
   int                               m_nAutoSelected;

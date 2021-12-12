@@ -243,7 +243,7 @@ void CFalconMotion::Tick()
 /******************************************************************************
     Description:	SetSetpoint - Sets the position for the motor.
     Arguments:	 	dSetpoint - The position to move to in desired units.
-                    dUsePosition - Select position or velocity setpoint.
+                    bUsePosition - Select position or velocity setpoint.
     Returns: 		Nothing
 ******************************************************************************/
 void CFalconMotion::SetSetpoint(double dSetpoint, bool bUsePosition)
