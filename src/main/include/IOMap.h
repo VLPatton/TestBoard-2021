@@ -12,7 +12,7 @@ const int nSolenoid1                    =   0;      // Solenoid channel for sole
 const int nSolenoid2                    =   1;      // Solenoid channel for solenoid 2.
 
 // CAN Device IDs.
-const int nDriveMotor1                  =   2;      // CAN ID for Right NEO drive motor.
+const int nDriveMotor1                  =   3;      // CAN ID for Right NEO drive motor.
 const int nDriveMotor2                  =   7;      // CAN ID for Left NEO drive motor.
 const int nAuxMotor1                    =   6;      // CAN ID for NEO 550 motor.
 const int nAuxMotor2                    =   1;      // CAN ID for Falcon500 motor.

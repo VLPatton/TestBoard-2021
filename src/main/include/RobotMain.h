@@ -17,8 +17,6 @@ using namespace frc;
 using namespace std;
 ///////////////////////////////////////////////////////////////////////////////
 
-
-
 /******************************************************************************
     Description:	CRobotMain class definition.
     Arguments:		None

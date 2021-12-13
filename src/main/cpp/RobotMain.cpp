@@ -19,7 +19,7 @@ CRobotMain::CRobotMain()
 	// Initialize objects and variables.
 	m_pJoystick						= new Joystick(0);
 	m_pDrive						= new CDrive(m_pJoystick);
-	m_pAuxAttachment				= new CAuxAttachment();
+	m_pAuxAttachment				= new CAuxAttachment(m_pJoystick);
 	m_pAutonomousChooser			= new SendableChooser<string>();
 }
 
@@ -32,12 +32,10 @@ CRobotMain::~CRobotMain()
 {
 	delete m_pJoystick;
 	delete m_pDrive;
-	delete m_pAuxAttachment;
 	delete m_pAutonomousChooser;
 
 	m_pJoystick						= nullptr;
 	m_pDrive						= nullptr;
-	m_pAuxAttachment				= nullptr;
 	m_pAutonomousChooser			= nullptr;
 }
 
@@ -101,7 +99,7 @@ void CRobotMain::TeleopInit()
 {
 	// Initialize classes.
 	m_pDrive->Init();
-	m_pAuxAttachment->Init();
+	m_pDrive->SetJoystickControl(true);
 }
 
 /******************************************************************************
@@ -113,7 +111,6 @@ void CRobotMain::TeleopInit()
 void CRobotMain::TeleopPeriodic()
 {
 	m_pDrive->Tick();
-	m_pAuxAttachment->Tick();
 }
 
 /******************************************************************************
@@ -144,7 +141,9 @@ void CRobotMain::DisabledPeriodic()
 ******************************************************************************/
 void CRobotMain::TestInit() 
 {
-
+	m_pDrive->Init();
+	m_pAuxAttachment->Init();
+	m_pDrive->SetJoystickControl(true);
 }
 
 /******************************************************************************
@@ -155,7 +154,8 @@ void CRobotMain::TestInit()
 ******************************************************************************/
 void CRobotMain::TestPeriodic()
 {
-
+	m_pDrive->Tick();
+	m_pAuxAttachment->Tick();
 }
 
 #ifndef RUNNING_FRC_TESTS

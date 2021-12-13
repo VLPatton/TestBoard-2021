@@ -7,6 +7,7 @@
 #define AuxAttachment_h
 
 #include "IOMap.h"
+#include "Drive.h"
 
 #include <frc/Solenoid.h>
 #include <ctre/Phoenix.h>
@@ -22,7 +23,7 @@ class CAuxAttachment
 {
 public:
     // Declare class methods.
-    CAuxAttachment();
+    CAuxAttachment(Joystick* pJoystick);
     ~CAuxAttachment();
     void Init();
     void Tick();
@@ -33,6 +34,8 @@ private:
     WPI_TalonFX*                            m_pAuxMotor2;       // Falcon 500
     WPI_TalonSRX*                           m_pAuxMotor3;       // BAG Motor
     Solenoid*                               m_pActuator1;
+
+    Joystick*                               m_pJoystick;
 };
 ///////////////////////////////////////////////////////////////////////////////
 #endif

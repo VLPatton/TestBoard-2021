@@ -64,7 +64,7 @@ void CDrive::Init()
 	m_pDriveMotor2->ResetEncoderPosition(); 
 
 	// Don't let differential drive invert anything.
-	m_pRobotDrive->SetRightSideInverted(false);
+	m_pRobotDrive->SetRightSideInverted(true);
 }
 
 
