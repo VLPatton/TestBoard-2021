@@ -34,7 +34,6 @@ private:
     WPI_TalonFX*                            m_pAuxMotor2;       // Falcon 500
     WPI_TalonSRX*                           m_pAuxMotor3;       // BAG Motor
     Solenoid*                               m_pActuator1;
-
     Joystick*                               m_pJoystick;
 };
 ///////////////////////////////////////////////////////////////////////////////

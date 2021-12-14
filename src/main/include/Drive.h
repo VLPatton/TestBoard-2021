@@ -1,7 +1,7 @@
 /****************************************************************************
-    Description:	Defines the CDrive control class.
-    Classes:		CDrive
-    Project:		2022 Testboard Robot Code
+	Description:	Defines the CDrive control class.
+	Classes:		CDrive
+	Project:		2022 Testboard Robot Code
 ****************************************************************************/
 #ifndef Drive_h
 #define Drive_h
@@ -15,32 +15,44 @@
 #include <frc/smartdashboard/SmartDashboard.h>
 #include <frc/Joystick.h>
 #include <frc/drive/DifferentialDrive.h>
+#include <frc/kinematics/DifferentialDriveOdometry.h>
+#include <frc2/command/RamseteCommand.h>
+#include <frc/trajectory/TrajectoryGenerator.h>
+#include <frc/trajectory/TrajectoryConfig.h>
+#include <frc/trajectory/Trajectory.h>
+#include <frc/geometry/Pose2d.h>
+#include <AHRS.h>
 
 using namespace rev;
 using namespace frc;
+using namespace units;
 
 // Declare constants
-const double dMotorOpenLoopRampRate             = 0.650;
-const double dJoystickDeadzone                  = 0.100; 
+const double dMotorOpenLoopRampRate				= 0.650;
+const double dJoystickDeadzone					= 0.100;
 ///////////////////////////////////////////////////////////////////////////////
 class CDrive
 {
 public:
-    // Declare class methods.
-    CDrive(Joystick *pDriveController);
-    ~CDrive();
-    void Init();
-    void Tick();
-    void SetJoystickControl(bool bJoystickControl);
+	// Declare class methods.
+	CDrive(Joystick *pDriveController);
+	~CDrive();
+	void Init();
+	void Tick();
+	void ResetOdometry();
+	void SetJoystickControl(bool bJoystickControl);
 
 private:
-    // Declare class objects and variables.
-    bool                                    m_bJoystickControl;
-    CSparkMotion*                           m_pDriveMotor1;
-    CSparkMotion*                           m_pDriveMotor2;
-    AnalogInput*                            m_pPot1;
-    Joystick*                               m_pDriveController;
-    DifferentialDrive*                      m_pRobotDrive;
+	// Declare class objects and variables.
+	bool									m_bJoystickControl;
+	CSparkMotion*							m_pDriveMotor1;
+	CSparkMotion*							m_pDriveMotor2;
+	AnalogInput*							m_pPot1;
+	AHRS*									m_pGyro;
+	Joystick*								m_pDriveController;
+	DifferentialDrive*						m_pRobotDrive;
+	DifferentialDriveOdometry*				m_pOdometry;
+	Trajectory								m_Trajectory;
 };
 ///////////////////////////////////////////////////////////////////////////////
 #endif

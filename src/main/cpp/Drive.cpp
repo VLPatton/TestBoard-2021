@@ -22,6 +22,8 @@ CDrive::CDrive(Joystick* pDriveController)
 	m_pPot1                 = new AnalogInput(nPotentiometer);
 	m_pDriveController      = pDriveController;
 	m_pRobotDrive           = new DifferentialDrive(*m_pDriveMotor1->GetMotorPointer(), *m_pDriveMotor2->GetMotorPointer());
+	m_pGyro					= new AHRS(SPI::Port::kMXP);
+	m_pOdometry				= new DifferentialDriveOdometry(Rotation2d(degree_t(-m_pGyro->GetYaw())), m_Trajectory.InitialPose());
 }
 
 /******************************************************************************
@@ -58,13 +60,17 @@ void CDrive::Init()
 
 	// Clear persistant motor controller faults.
 	m_pDriveMotor1->ClearStickyFaults();
+	m_pDriveMotor2->ClearStickyFaults();
 
 	// Reset motor encoders.
 	m_pDriveMotor1->ResetEncoderPosition();  
 	m_pDriveMotor2->ResetEncoderPosition(); 
 
-	// Don't let differential drive invert anything.
+	// Invert right side to match left.
 	m_pRobotDrive->SetRightSideInverted(true);
+
+	// Reset odometry and encoders.
+	ResetOdometry();
 }
 
 
@@ -97,6 +103,20 @@ void CDrive::Tick()
 		m_pRobotDrive->ArcadeDrive(dYAxis, dXAxis, false);
 	}
 	
+}
+
+/****************************************************************************
+    Description:	ResetOdometry - Method that resets encoders and odometry.
+    Arguments: 		None
+    Returns: 		Nothing
+****************************************************************************/
+void CDrive::ResetOdometry()
+{
+    // Reset Gyro.
+    m_pGyro->ZeroYaw();
+
+    // Reset field position.
+    m_pOdometry->ResetPosition(m_Trajectory.InitialPose(), Rotation2d(degree_t(-m_pGyro->GetYaw())));
 }
 
 /******************************************************************************

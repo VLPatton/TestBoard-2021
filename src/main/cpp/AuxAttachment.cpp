@@ -45,10 +45,16 @@ CAuxAttachment::~CAuxAttachment()
 ******************************************************************************/
 void CAuxAttachment::Init()
 {
-	// Set max acceleration to .65 seconds.
-	m_pAuxMotor1->SetOpenLoopRampRate(dMotorOpenLoopRampRate);
-	m_pAuxMotor2->ConfigOpenloopRamp(dMotorOpenLoopRampRate);
-	m_pAuxMotor3->ConfigOpenloopRamp(dMotorOpenLoopRampRate);
+	// Set max acceleration to .65 seconds and clear faults.
+	m_pAuxMotor1->SetOpenLoopRampRate(dMotorOpenLoopRampRate);	// NEO 550
+	m_pAuxMotor1->ClearFaults();
+    m_pAuxMotor1->ClearError();
+
+	m_pAuxMotor2->ConfigOpenloopRamp(dMotorOpenLoopRampRate);	// Falcon500
+	m_pAuxMotor2->ClearStickyFaults();
+
+	m_pAuxMotor3->ConfigOpenloopRamp(dMotorOpenLoopRampRate);	// BAG motor
+	m_pAuxMotor3->ClearStickyFaults();
 }
 
 /******************************************************************************
@@ -58,10 +64,10 @@ void CAuxAttachment::Init()
 ******************************************************************************/
 void CAuxAttachment::Tick()
 {
-	if (m_pJoystick->GetRawButtonReleased(eButtonA)) {
-		m_pAuxMotor2->Set((double)0);
-	}
 	if (m_pJoystick->GetRawButtonPressed(eButtonA)) {
-		m_pAuxMotor2->Set((double)1);
+		m_pAuxMotor2->Set((double)1);					// If button A is pressed, set speed to 100%
+	}
+	if (m_pJoystick->GetRawButtonReleased(eButtonA)) {
+		m_pAuxMotor2->Set((double)0);					// If button A is released, set speed to 0%
 	}
 }

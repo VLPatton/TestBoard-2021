@@ -24,27 +24,29 @@ using namespace std;
 ******************************************************************************/
 class CRobotMain : public TimedRobot 
 {
- public:
-  // Declare class methods.
-  CRobotMain();
-  ~CRobotMain();
-  void RobotInit() override;
-  void RobotPeriodic() override;
-  void AutonomousInit() override;
-  void AutonomousPeriodic() override;
-  void TeleopInit() override;
-  void TeleopPeriodic() override;
-  void DisabledInit() override;
-  void DisabledPeriodic() override;
-  void TestInit() override;
-  void TestPeriodic() override;
+public:
+	// Declare class methods.
+	CRobotMain();
+	~CRobotMain();
+	void RobotInit() override;
+	void RobotPeriodic() override;
+	void AutonomousInit() override;
+	void AutonomousPeriodic() override;
+	void TeleopInit() override;
+	void TeleopPeriodic() override;
+	void DisabledInit() override;
+	void DisabledPeriodic() override;
+	void TestInit() override;
+	void TestPeriodic() override;
 
- private:
-  // Declare objects and variables.
-  CDrive*                           m_pDrive;
-  CAuxAttachment*                   m_pAuxAttachment;
-  SendableChooser<string>*          m_pAutonomousChooser;
-  string                            m_strAutoSelected;
-  int                               m_nAutoSelected;
-  Joystick*                         m_pJoystick;
+private:
+	// Declare objects and variables.
+	CDrive*							m_pDrive;
+	CAuxAttachment*					m_pAuxAttachment;
+	SendableChooser<string>*		m_pAutonomousChooser;
+	string							m_strAutoSelected;
+	Joystick*						m_pJoystick;
+
+	int								m_nAutoSelected;
+	int								m_nAutoState;
 };
