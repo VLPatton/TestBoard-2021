@@ -48,7 +48,7 @@ void CAuxAttachment::Init()
 	// Set max acceleration to .65 seconds and clear faults.
 	m_pAuxMotor1->SetOpenLoopRampRate(dMotorOpenLoopRampRate);	// NEO 550
 	m_pAuxMotor1->ClearFaults();
-    m_pAuxMotor1->ClearError();
+	m_pAuxMotor1->ClearError();
 
 	m_pAuxMotor2->ConfigOpenloopRamp(dMotorOpenLoopRampRate);	// Falcon500
 	m_pAuxMotor2->ClearStickyFaults();
