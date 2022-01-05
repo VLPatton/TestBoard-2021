@@ -85,7 +85,7 @@ public:
     State	GetState()									{ return m_nCurrentState;												};
     void	SetState(State nNewState)					{ m_nCurrentState = nNewState;											};
     double	GetMotorCurrent()							{ return m_pMotor->GetOutputCurrent();									};
-    double	GetMotorVoltage()							{ return m_pMotor->GetBusVoltage(); 							};
+    double	GetMotorVoltage()							{ return m_pMotor->GetBusVoltage(); 				        			};
     double	GetRevsPerUnit()							{ return m_dRevsPerUnit;												};
     int		GetPulsesPerRev()							{ return m_nPulsesPerRev;												};
 //	int		GetRawEncoderCounts()						{ return m_pMotor->GetSelectedSensorPosition();	                        };

@@ -46,7 +46,4 @@ private:
 	SendableChooser<string>*		m_pAutonomousChooser;
 	string							m_strAutoSelected;
 	Joystick*						m_pJoystick;
-
-	int								m_nAutoSelected;
-	int								m_nAutoState;
 };

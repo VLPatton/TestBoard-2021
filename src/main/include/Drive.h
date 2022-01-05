@@ -31,6 +31,12 @@ using namespace units;
 const double dMotorOpenLoopRampRate				= 0.650;
 const double dJoystickDeadzone					= 0.100;
 ///////////////////////////////////////////////////////////////////////////////
+
+/******************************************************************************
+    Description:	CDrive class definition.
+    Arguments:		None
+    Derived From:	Nothing
+******************************************************************************/
 class CDrive
 {
 public:
@@ -51,8 +57,8 @@ private:
 	AHRS*									m_pGyro;
 	Joystick*								m_pDriveController;
 	DifferentialDrive*						m_pRobotDrive;
-	DifferentialDriveOdometry*				m_pOdometry;
-	Trajectory								m_Trajectory;
+	//DifferentialDriveOdometry*				m_pOdometry;
+	//Trajectory								m_Trajectory;
 };
 ///////////////////////////////////////////////////////////////////////////////
 #endif

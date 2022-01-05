@@ -8,22 +8,22 @@
 
 /******************************************************************************
 	Description:	CDrive Constructor.
-	Arguments:		None
+	Arguments:		Joystick* pDriveController - controller for driving
 	Derived From:	Nothing
 ******************************************************************************/
 CDrive::CDrive(Joystick* pDriveController)
 {
 	// Initialize variable.
-	m_bJoystickControl      = false;
+	m_bJoystickControl		= false;
 
 	// Initialize objects.
-	m_pDriveMotor1          = new CSparkMotion(nDriveMotor1);
-	m_pDriveMotor2          = new CSparkMotion(nDriveMotor2);
-	m_pPot1                 = new AnalogInput(nPotentiometer);
-	m_pDriveController      = pDriveController;
-	m_pRobotDrive           = new DifferentialDrive(*m_pDriveMotor1->GetMotorPointer(), *m_pDriveMotor2->GetMotorPointer());
+	m_pDriveMotor1			= new CSparkMotion(nDriveMotor1);
+	m_pDriveMotor2			= new CSparkMotion(nDriveMotor2);
+	m_pPot1					= new AnalogInput(nPotentiometer);
+	m_pDriveController		= pDriveController;
+	m_pRobotDrive			= new DifferentialDrive(*m_pDriveMotor1->GetMotorPointer(), *m_pDriveMotor2->GetMotorPointer());
 	m_pGyro					= new AHRS(SPI::Port::kMXP);
-	m_pOdometry				= new DifferentialDriveOdometry(Rotation2d(degree_t(-m_pGyro->GetYaw())), m_Trajectory.InitialPose());
+	//m_pOdometry				= new DifferentialDriveOdometry(Rotation2d(degree_t(-m_pGyro->GetYaw())), m_Trajectory.InitialPose());
 }
 
 /******************************************************************************
@@ -38,6 +38,8 @@ CDrive::~CDrive()
 	delete m_pDriveMotor2;
 	delete m_pPot1;
 	delete m_pRobotDrive;
+	delete m_pGyro;
+	//delete m_pOdometry;
 	
 	// Set pointer to null pointers.
 	m_pDriveMotor1      = nullptr;
@@ -45,6 +47,8 @@ CDrive::~CDrive()
 	m_pPot1             = nullptr;
 	m_pRobotDrive       = nullptr;
 	m_pDriveController  = nullptr;
+	m_pGyro				= nullptr;
+	//m_pOdometry			= nullptr;
 }
 
 /******************************************************************************
@@ -106,22 +110,20 @@ void CDrive::Tick()
 }
 
 /****************************************************************************
-    Description:	ResetOdometry - Method that resets encoders and odometry.
-    Arguments: 		None
-    Returns: 		Nothing
+	Description:	ResetOdometry - Method that resets encoders and odometry.
+	Arguments: 		None
+	Returns: 		Nothing
 ****************************************************************************/
 void CDrive::ResetOdometry()
 {
-    // Reset Gyro.
-    m_pGyro->ZeroYaw();
-
-    // Reset field position.
-    m_pOdometry->ResetPosition(m_Trajectory.InitialPose(), Rotation2d(degree_t(-m_pGyro->GetYaw())));
+	// Reset Gyro.
+	m_pGyro->ZeroYaw();
 }
 
 /******************************************************************************
 	Description:	Enable Joystick control.
-	Arguments:		None
+	Arguments:		bool bJoystickControl - the boolean value of whether to 
+					set to true or false
 	Returns:    	Nothing
 ******************************************************************************/
 void CDrive::SetJoystickControl(bool bJoystickControl)
