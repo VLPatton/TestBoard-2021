@@ -87,7 +87,7 @@ void CAuxAttachment::Tick()
 	Description:	Get the states of the two lim. sw. inputs and return in an
 					integer pointer
 	Arguments:		None
-	Returns:	    bool* pStates - the pointer to states
+	Returns:	    Nothing
 ******************************************************************************/
 void CAuxAttachment::Activate550OnSwitch()
 {
@@ -105,7 +105,7 @@ void CAuxAttachment::Activate550OnSwitch()
 	Description:	Get the states of the two lim. sw. inputs and return in an
 					integer pointer
 	Arguments:		None
-	Returns:	    bool* pStates - the pointer to states
+	Returns:	    m_pOpticalSensor->Get()
 ******************************************************************************/
 bool CAuxAttachment::ReadOpticalSensor()
 {
